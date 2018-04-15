@@ -1,41 +1,37 @@
-#include <LSM6DS3Sensor.h>
-#include <LSM6DS3_ACC_GYRO_Driver.h>
 
-#define I2C2_SDA 0 # TODO figure out what this should be
-#define I2C2_SCL 1 # TODO ^
+#define I2C2_SCL 19
+#define I2C2_SDA 18
 
-TwoWire *dev_i2c;
-LSM6DS3Sensor *AccGyr;
+#include "SparkFunLSM6DS3.h"
+#include "Wire.h"
+#include "SPI.h"
+
+LSM6DS3 SensorOne( I2C_MODE );
+//LSM6DS3Sensor *AccGyr;
 
 void setup() {
-  SerialPort.begin(9600);
+  Serial.begin(9600);
+  delay(500);
   
-  dev_i2c = new TwoWire(I2C2_SDA, I2C2_SCL);  
-  dev_i2c->begin();
+  Wire.setSDA(I2C2_SDA);
+  Wire.setSCL(I2C2_SCL);
 
-  AccGyr = new LSM6DS3Sensor(dev_i2c);  
-  AccGyr->Enable_X();  
-  AccGyr->Enable_G();  
+  int stat = SensorOne.begin();
+  Serial.println(stat);
+  if (stat != 0) {
+     Serial.println("Problem starting the sensor.");
+  }
+  else {
+    Serial.println("Sensor started!");
+  }
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  int32_t accelerometer[3];
-  int32_t gyroscope[3];
-  AccGyr->Get_X_Axes(accelerometer);
-  AccGyr->Get_G_Axes(gyroscope);
-
-  SerialPort.print("| Acc[mg]: ");
-  SerialPort.print(accelerometer[0]);
-  SerialPort.print(" ");
-  SerialPort.print(accelerometer[1]);
-  SerialPort.print(" ");
-  SerialPort.print(accelerometer[2]);
-  SerialPort.print(" | Gyr[mdps]: ");
-  SerialPort.print(gyroscope[0]);
-  SerialPort.print(" ");
-  SerialPort.print(gyroscope[1]);
-  SerialPort.print(" ");
-  SerialPort.print(gyroscope[2]);
-  SerialPort.println(" |");
+  Serial.print("\nAccelerometer:\n");
+  Serial.print(" X1 = ");
+  Serial.println(SensorOne.readFloatAccelX(), 4);
+  Serial.print(" Y1 = ");
+  Serial.println(SensorOne.readFloatAccelY(), 4);
+  Serial.print(" Z1 = ");
+  Serial.println(SensorOne.readFloatAccelZ(), 4);
 }
