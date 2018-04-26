@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>rover_viz</name>
+  <version>0.1.0</version>
+  <description>
+  This package wraps visualization and GUI functionality for the Stanford Mars rover.
+  </description>
+  <maintainer email="rachel0@stanford.edu">Rachel Gardner</maintainer>
+  <author email="rachel0@stanford.edu">Rachel Gardner</author>
+  <license>BSD</license>
+</package>

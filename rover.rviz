@@ -47,15 +47,6 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
-      Class: rviz_plugin_tutorials/Imu
-      Color: 204; 51; 204
-      Enabled: true
-      History Length: 1
-      Name: Imu
-      Topic: ""
-      Unreliable: false
-      Value: true
-    - Alpha: 1
       Autocompute Intensity Bounds: false
       Autocompute Value Bounds:
         Max Value: 10
@@ -128,7 +119,6 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
-        Imu: true
         RelativeHumidity: true
         Temperature: true
         Value: true
@@ -146,7 +136,6 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
-        Imu: true
         RelativeHumidity: true
         Temperature: true
         Value: true
@@ -164,7 +153,6 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
-        Imu: true
         RelativeHumidity: true
         Temperature: true
         Value: true
